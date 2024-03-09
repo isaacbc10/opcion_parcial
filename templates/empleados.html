@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acciones de Empleados</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</head>
+<body>
+
+<div class="containerp">
+    <h1>Acciones de Empleados</h1>
+    <div class="container">
+        
+    <!-- Formulario para buscar un empleado -->
+    <div class="seccion">
+        <h2>Buscar y Mostrar Información de Empleado</h2>
+        <form class="formulario" method="post" action="/acciones">
+            <div class="input-group">
+                <label for="buscar_nombre">Nombre:</label>
+                <input type="text" id="buscar_nombre" name="nombre" required pattern="[^\s]+.*">
+            </div>
+            <div class="input-group">
+                <label for="buscar_apellido">Apellido:</label>
+                <input type="text" id="buscar_apellido" name="apellido" required pattern="[^\s]+.*">
+            </div>
+            <button class="button" type="submit" name="accion" value="buscar">Buscar</button>
+        </form>
+        {% if empleado_encontrado %}
+        <div class="empleado-encontrado">
+            <h3>Información del Empleado:</h3>
+            <p>Nombre: {{ empleado_encontrado[0] }}, Apellido: {{ empleado_encontrado[1] }}, Salario: {{ empleado_encontrado[2] }}</p>
+        </div>
+        {% endif %}
+    </div>        
+    
+    <div class="seccion">
+        <h2>Agregar a un Empleado</h2>
+        <form class="formulario" method="post" action="/acciones">
+            <div class="input-group">
+                <label for="agregar_nombre">Nombre:</label>
+                <input type="text" id="agregar_nombre" name="nombre" required pattern="[^\s]+.*">
+            </div>
+            <div class="input-group">
+                <label for="agregar_apellido">Apellido:</label>
+                <input type="text" id="agregar_apellido" name="apellido" required pattern="[^\s]+.*">
+            </div>
+            <div class="input-group">
+                <label for="agregar_salario">Salario:</label>
+                <input type="number" id="agregar_salario" name="salario" required>
+            </div>
+            <button class="button" type="submit" name="accion" value="agregar">Agregar</button>
+        </form>
+    </div>
+    
+    <div class="seccion">
+        <h2>Eliminar a un Empleado</h2>
+        <form class="formulario" method="post" action="/acciones">
+            <div class="input-group">
+                <label for="eliminar_nombre">Nombre:</label>
+                <input type="text" id="eliminar_nombre" name="nombre" required pattern="[^\s]+.*">
+            </div>
+            <div class="input-group">
+                <label for="eliminar_apellido">Apellido:</label>
+                <input type="text" id="eliminar_apellido" name="apellido" required pattern="[^\s]+.*">
+            </div>
+            <button class="button" type="submit" name="accion" value="eliminar">Eliminar</button>
+        </form>
+    </div>
+
+    <!-- Mostrar todos los empleados -->
+    <div class="seccion">
+        <h2>Información del Empleado</h2>
+        <table>
+            <tr>
+                <th>Nombre </th>
+                <th>Apellido</th>
+                <th>Salario</th>
+            </tr>
+            {% for empleado in empleados %}
+            <tr>
+                <td>{{ empleado[0] }}</td>
+                <td>{{ empleado[1] }}</td>
+                <td>{{ empleado[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Contenedor de mensajes de consola -->
+    <div class="seccion" id="console-section">
+        <h2>Consola</h2>
+        <div id="console-messages">
+            {% for message in console_messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>

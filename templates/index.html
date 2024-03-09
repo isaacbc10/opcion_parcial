@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Presentación</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <div class="containerm">
+        <div class="title">
+            <hr>
+            <h1>Bienvenido a la Opcion #2 del parcial de Algoritmo II</h1>
+            <hr>
+        </div>
+        <div class="info">
+            <p>Nombre: Isaac David Badel Cuentas</p>
+            <p>Profesor: Oscar Ramirez Vargas</p>
+            <p>Materia: Algoritmo II</p>
+            <p>Tema: Lista circular enlazada - Estructuras de datos Dinamicas</p>
+        </div>
+        <hr>
+        <h2>¿En que consiste la opcion 2?</h2>
+        <p>La segunda opción para el día del parcial, nos piden desarrollar una aplicación con una interfaz grafica (Puede ser WEB), donde usando una estructura de datos dinámica lista circular, se permita la gestión de los empleados de una empresa, esta debe permitir guardar la información de los empleados y permitir buscar el salario que tiene cada empleado.  
+            Debe desarrollarse en Python.</p>
+        <hr>
+        <p>Para realizar acciones relacionadas con los gestion de empleados, nos dirigiremos a: <a href="{{ url_for('acciones') }}">Acciones de Empleados</a>.</p>
+        <hr>
+    </div>
+
+</body>
+</html>
